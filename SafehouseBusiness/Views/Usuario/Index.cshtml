@@ -1,0 +1,35 @@
+﻿@using SafeHouseBusiness.Domain.Entidades
+@model IList<Usuario>
+
+@{
+
+}
+
+<h1>Usuários</h1>
+
+<a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Criar">Criar Usuário</a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Usuario item in Model)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@item.Endereco.Logradouro</td>
+                <td>@item.Contato.Telefone</td>
+                <td>@item.Contato.Email</td>
+                <td><a href="#">Editar</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

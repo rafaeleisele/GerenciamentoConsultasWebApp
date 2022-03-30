@@ -1,0 +1,67 @@
+﻿@using SafeHouseBusiness.Domain.Entidades
+@model CriarUsuarioModel
+
+@{
+
+}
+
+@using (Html.BeginForm())
+{
+    <div class="mt-3">
+        <h3>Infomações do Local:</h3>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nome</label>
+            @Html.TextBoxFor(p => p.LocalConsulta.Nome, new { @class = "form-control w-50 mt-1"})
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Cnpj</label>
+            @Html.TextBoxFor(p => p.LocalConsulta.Documento.Identificacao, new { @class = "form-control w-50 mt-1"})
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Cep</label>
+            @Html.TextBoxFor(p => p.LocalConsulta.Endereco.Cep, new { @class = "form-control w-50 mt-1", required = true})
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Cidade</label>
+            @Html.TextBoxFor(p => p.LocalConsulta.Endereco.Cidade, new { @class = "form-control w-50 mt-1"})
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Logradouro</label>
+            @Html.TextBoxFor(p => p.LocalConsulta.Endereco.Logradouro, new { @class = "form-control w-50 mt-1"})
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Numero</label>
+            @Html.TextBoxFor(p => p.LocalConsulta.Endereco.Numero, new { @class = "form-control w-50 mt-1"})
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Complemento</label>
+            @Html.TextBoxFor(p => p.LocalConsulta.Endereco.Complemento, new { @class = "form-control w-50 mt-1"})
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <h3>Informações do contato:</h3>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nome</label>
+            @Html.TextBoxFor(p => p.Usuario.Nome, new { @class = "form-control w-50 mt-1"})
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            @Html.TextBoxFor(p => p.Usuario.Contato.Email, new { @class = "form-control w-50 mt-1"})
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Telefone</label>
+            @Html.TextBoxFor(p => p.Usuario.Contato.Telefone, new { @class = "form-control w-50 mt-1"})
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Documento</label>
+            @Html.TextBoxFor(p => p.Usuario.Documento.Identificacao, new { @class = "form-control w-50 mt-1"})
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Tipo Documento</label>
+            @Html.TextBoxFor(p => p.Usuario.Documento.TipoDocumento, new { @class = "form-control w-50 mt-1"})
+        </div>
+    </div>
+
+    <button type="submit" class="btn mt-3 btn-primary">Cadastrar</button>
+}
