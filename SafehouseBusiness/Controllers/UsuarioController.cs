@@ -9,15 +9,13 @@ namespace SafehouseBusiness.Controllers
 {
     public class UsuarioController : Controller
     {
-        private readonly ILogger<UsuarioController> _logger;
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly ILocalConsultaRepository _localConsultaRepository;
-        //asas
-        public UsuarioController(ILogger<UsuarioController> logger, IUsuarioRepository usuarioRepository, ILocalConsultaRepository localConsultaRepository)
+
+        public UsuarioController(IUsuarioRepository usuarioRepository, ILocalConsultaRepository localConsultaRepository)
         {
             _localConsultaRepository = localConsultaRepository;
             _usuarioRepository = usuarioRepository;
-            _logger = logger;
         }
 
         public IActionResult Index()
@@ -45,7 +43,7 @@ namespace SafehouseBusiness.Controllers
         {
             try
             {
-                _usuarioRepository.Criar(request.Usuario);
+                var retorno = _usuarioRepository.Criar(request.Usuario);
                 _localConsultaRepository.Criar(request.LocalConsulta);
 
                 return RedirectToAction("Index");
@@ -54,6 +52,12 @@ namespace SafehouseBusiness.Controllers
             {
                 throw;
             }
+        }
+
+        public IActionResult Delete(int id)
+        {
+            _usuarioRepository.Deletar(id);
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

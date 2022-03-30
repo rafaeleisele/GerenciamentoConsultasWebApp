@@ -8,9 +8,9 @@
         public int IdContato { get; set; }
         public string Nome { get; set; }
 
-        public virtual Endereco Endereco { get; set; }
-        public virtual Contato Contato { get; set; }
-        public virtual DadosLogin DadosLogin { get; set; }
-        public virtual Documento Documento { get; set; }
+        public Endereco Endereco { get; set; }
+        public Contato Contato { get; set; }
+        public DadosLogin DadosLogin { get; set; }
+        public Documento Documento { get; set; }
     }
 }

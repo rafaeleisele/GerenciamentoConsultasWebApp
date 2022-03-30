@@ -1,0 +1,30 @@
+﻿@using SafeHouseBusiness.Domain.Entidades
+
+@model IEnumerable<Endereco>
+
+@{
+    ViewData["Title"] = "Endereços Cadastrados";
+}
+
+<h1>Endereços Cadastrados</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Logradouro</th>
+            <th scope="col">Cep</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Endereco item in Model)
+        {
+            <tr>
+                <td>@item.Logradouro</td>
+                <td>@item.Cep</td>
+                <td>@Html.ActionLink("Detalhes", "Details", "Endereco", item.Id)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

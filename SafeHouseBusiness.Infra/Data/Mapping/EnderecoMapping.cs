@@ -17,8 +17,6 @@ namespace SafeHouseBusiness.Infra.Data.Mapping
             builder.Property(x => x.Logradouro).HasColumnName("logradouro");
             builder.Property(x => x.Numero).HasColumnName("numero");
             builder.Property(x => x.Complemento).HasColumnName("complemento");
-
-            builder.HasOne(x => x.Usuario).WithOne(x => x.Endereco).HasForeignKey<Usuario>(x => x.IdEndereco);
         }
     }
 }

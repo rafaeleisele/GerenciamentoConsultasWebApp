@@ -22,11 +22,11 @@
 
     public interface IDeletar<TEntity>
     {
-        bool Deletar(TEntity entity);
+        bool Deletar(int id);
     }
 
     public interface ICriar<TEntity>
     {
-        bool Criar(TEntity entity);
+        TEntity Criar(TEntity entity);
     }
 }

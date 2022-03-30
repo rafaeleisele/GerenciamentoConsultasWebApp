@@ -7,5 +7,10 @@ namespace SafeHouseBusiness.Infra.Repository
     public class EnderecoRepository : Repository<Endereco>, IEnderecoRepository
     {
         public EnderecoRepository(ApplicationDbContext context) : base(context) { }
+
+        public IEnumerable<Endereco> BuscarEnderecosPorFiltro()
+        {
+            return Set.OrderBy(p => p.Id).ToList();
+        }
     }
 }

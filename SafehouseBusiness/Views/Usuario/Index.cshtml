@@ -2,7 +2,7 @@
 @model IList<Usuario>
 
 @{
-
+    ViewData["Title"] = "Usuários Cadastrados";
 }
 
 <h1>Usuários</h1>
@@ -14,9 +14,9 @@
     <thead>
         <tr>
             <th scope="col">Nome</th>
-            <th scope="col">Endereço</th>
             <th scope="col">Telefone</th>
             <th scope="col">Email</th>
+            <th></th>
             <th></th>
         </tr>
     </thead>
@@ -25,10 +25,10 @@
         {
             <tr>
                 <td>@item.Nome</td>
-                <td>@item.Endereco.Logradouro</td>
                 <td>@item.Contato.Telefone</td>
                 <td>@item.Contato.Email</td>
-                <td><a href="#">Editar</a></td>
+                <td>@Html.ActionLink("Editar", "Edit", "Usuario", new { id = item.Id })</td>
+                <td>@Html.ActionLink("Deletar", "Delete", "Usuario", new { id = item.Id })</td>
             </tr>
         }
     </tbody>

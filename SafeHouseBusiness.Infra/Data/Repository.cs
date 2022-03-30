@@ -19,32 +19,31 @@ namespace SafeHouseBusiness.Infra.Data
 
         public bool Atualizar(TEntidade entity)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool Criar(TEntidade entity)
-        {
-            var retorno = Set.Add(entity);
+            Set.Update(entity);
             context.SaveChanges();
 
             return true;
         }
 
-        public bool Deletar(TEntidade entity)
+        public TEntidade Criar(TEntidade entity)
         {
-            throw new NotImplementedException();
+            var retorno = Set.Add(entity);
+            context.SaveChanges();
+
+            return retorno.Entity;
         }
 
-        public TEntidade ObterPorGuid(Guid guid)
+        public bool Deletar(int id)
         {
-            throw new NotImplementedException();
+            Set.Remove(ObterPorId(id));
+            context.SaveChanges();
+
+            return true;
         }
 
-        public TEntidade ObterPorId(int id)
-        {
-            TEntidade entidade  = Set.Find(id);
-            return entidade;
-        }
+        public TEntidade ObterPorGuid(Guid guid) => Set.FirstOrDefault(p => p.Guid == guid);
+
+        public TEntidade ObterPorId(int id) => Set.Find(id);
 
         private void Comparator(Object fromObjeto, PropertyInfo propertyInfo, Type toObjeto)
         {
