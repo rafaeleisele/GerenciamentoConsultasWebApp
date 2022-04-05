@@ -23,6 +23,12 @@ namespace SafehouseBusiness.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Index(LoginUsuarioModel loginUsuarioModel)
+        {
+            return RedirectToAction("Index","Usuario");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -1,3 +1,4 @@
+
 using SafeHouseBusiness.Infra.Repository;
 using SafeHouseBusiness.Domain.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +17,8 @@ builder.Services.AddScoped<ILocalConsultaRepository, LocalConsultaRepository>();
 
 var provider = builder.Services.BuildServiceProvider();
 
-var repo = provider.GetService<IUsuarioRepository>(); var usuario = new Usuario
+var repo = provider.GetService<IUsuarioRepository>();
+var usuario = new Usuario
 {
     Nome = "Elizabeth",
     Contato = new Contato

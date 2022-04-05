@@ -10,7 +10,7 @@ namespace SafeHouseBusiness.Domain.Entidades
         public TipoLocalConsulta TipoLocalConsulta { get; set; }
         public Documento Documento { get; set; }
 
-        [NotMapped]
-        public virtual IList<Usuario> Usuarios { get; set;}
+
+        public List<UsuarioLocalConsulta> UsuariosLocalConsulta { get; set; }
     }
 }

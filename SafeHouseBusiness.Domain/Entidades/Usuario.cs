@@ -12,5 +12,7 @@
         public Contato Contato { get; set; }
         public DadosLogin DadosLogin { get; set; }
         public Documento Documento { get; set; }
+
+        public List<UsuarioLocalConsulta> UsuariosLocalConsulta { get; set; }
     }
 }
