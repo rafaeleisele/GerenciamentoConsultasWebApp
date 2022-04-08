@@ -18,10 +18,10 @@ namespace SafeHouseBusiness.Infra.Data.Mapping
             builder.Property(x => x.IdDadosLogin).HasColumnName("id_dadoslogin");
             builder.Property(x => x.IdContato).HasColumnName("id_contato");
 
-            builder.HasOne(p => p.Documento).WithOne().HasForeignKey<Documento>(fk => fk.Id);
-            builder.HasOne(p => p.Endereco).WithOne().HasForeignKey<Endereco>(fk => fk.Id);
-            builder.HasOne(p => p.DadosLogin).WithOne().HasForeignKey<DadosLogin>(fk => fk.Id);
-            builder.HasOne(p => p.Contato).WithOne().HasForeignKey<Contato>(fk => fk.Id);
+            builder.HasOne(p => p.Documento).WithOne(x => x.Usuario).HasForeignKey<Documento>(fk => fk.Id);
+            builder.HasOne(p => p.Endereco).WithOne(x => x.Usuario).HasForeignKey<Endereco>(fk => fk.Id);
+            builder.HasOne(p => p.DadosLogin).WithOne(x => x.Usuario).HasForeignKey<DadosLogin>(fk => fk.Id);
+            builder.HasOne(p => p.Contato).WithOne(x => x.Usuario).HasForeignKey<Contato>(fk => fk.Id);
         }
     }
 }

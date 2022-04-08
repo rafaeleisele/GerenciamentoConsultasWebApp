@@ -12,8 +12,8 @@ namespace SafeHouseBusiness.Infra.Data.Mapping
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName("id");
             builder.Property(x => x.Guid).HasColumnName("guid");
-            builder.Property(x => x.Email).HasColumnName("nome");
-            builder.Property(x => x.Telefone).HasColumnName("nome");
+            builder.Property(x => x.Email).HasColumnName("email");
+            builder.Property(x => x.Telefone).HasColumnName("telefone");
         }
     }
 }

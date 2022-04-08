@@ -27,8 +27,9 @@
                 <td>@item.Nome</td>
                 <td>@item.Contato.Telefone</td>
                 <td>@item.Contato.Email</td>
-                <td>@Html.ActionLink("Editar", "Edit", "Usuario", new { id = item.Id })</td>
+                <td>@Html.ActionLink("Editar", "Editar", "Usuario", new { id = item.Id })</td>
                 <td>@Html.ActionLink("Deletar", "Delete", "Usuario", new { id = item.Id })</td>
+
             </tr>
         }
     </tbody>

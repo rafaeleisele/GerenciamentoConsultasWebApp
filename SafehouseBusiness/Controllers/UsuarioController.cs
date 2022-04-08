@@ -37,6 +37,20 @@ namespace SafehouseBusiness.Controllers
                 throw;
             }
         }
+        
+        public IActionResult Editar(int id)
+        {
+            try
+            {               
+                return View(new EditarUsuarioModel(_usuarioRepository.ObterPorId(id)));
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
 
         [HttpPost]
         public IActionResult Criar(CriarUsuarioModel request)

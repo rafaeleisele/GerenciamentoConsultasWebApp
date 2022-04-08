@@ -14,5 +14,6 @@
         public Documento Documento { get; set; }
 
         public List<UsuarioLocalConsulta> UsuariosLocalConsulta { get; set; }
+
     }
 }

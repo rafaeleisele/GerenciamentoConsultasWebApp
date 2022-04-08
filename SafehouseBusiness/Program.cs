@@ -13,30 +13,29 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseInMemo
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
+builder.Services.AddScoped<IDocumentoRepository, DocumentosRepository>();
 builder.Services.AddScoped<ILocalConsultaRepository, LocalConsultaRepository>();
 
 var provider = builder.Services.BuildServiceProvider();
 
 var repo = provider.GetService<IUsuarioRepository>();
-var usuario = new Usuario
-{
-    Nome = "Elizabeth",
-    Contato = new Contato
-    {
-        Email = "email@email.com.br",
-        Telefone = "11900000000"
-    },
-    Documento = new Documento
+var documentoRepo = provider.GetService<IDocumentoRepository>();
+var contatoRepo = provider.GetService<IContatoRepository>();
+var enderecoRepo = provider.GetService<IEnderecoRepository>();
+
+var documento = documentoRepo.Criar(new Documento
     {
         TipoDocumento = TipoDocumento.Rg,
         Identificacao = "84848484"
-    },
-    DadosLogin = new DadosLogin
+    });
+var contato = contatoRepo.Criar(new Contato
     {
-        UserName = "admin",
-        Senha = "1234"
-    },
-    Endereco = new Endereco
+        Email = "email@email.com.br",
+        Telefone = "11900000000"
+    });
+
+var endereco = enderecoRepo.Criar( new Endereco
     {
         Cep = "01311100",
         Cidade = "São Paulo",
@@ -44,7 +43,14 @@ var usuario = new Usuario
         Bairro = "Bela Vista",
         Numero = "663"
 
-    }
+    });
+
+var usuario = new Usuario
+{
+    Nome = "Elizabeth",
+    IdContato = contato.Id,
+    IdDocumento = documento.Id,
+    IdEndereco = endereco.Id
 };
 
 repo.Criar(usuario);
@@ -66,7 +72,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Contato}/{action=Index}/{id?}");
 
 
 
