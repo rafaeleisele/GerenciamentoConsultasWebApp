@@ -20,22 +20,21 @@ builder.Services.AddScoped<ILocalConsultaRepository, LocalConsultaRepository>();
 var provider = builder.Services.BuildServiceProvider();
 
 var repo = provider.GetService<IUsuarioRepository>();
-var documentoRepo = provider.GetService<IDocumentoRepository>();
-var contatoRepo = provider.GetService<IContatoRepository>();
-var enderecoRepo = provider.GetService<IEnderecoRepository>();
 
-var documento = documentoRepo.Criar(new Documento
-    {
-        TipoDocumento = TipoDocumento.Rg,
-        Identificacao = "84848484"
-    });
-var contato = contatoRepo.Criar(new Contato
+var usuario = new Usuario
+{
+    Nome = "Elizabeth",
+    Contato = new Contato
     {
         Email = "email@email.com.br",
         Telefone = "11900000000"
-    });
-
-var endereco = enderecoRepo.Criar( new Endereco
+    },
+    Documento = new Documento
+    {
+        TipoDocumento = TipoDocumento.Rg,
+        Identificacao = "84848484"
+    },
+    Endereco = new Endereco
     {
         Cep = "01311100",
         Cidade = "São Paulo",
@@ -43,14 +42,7 @@ var endereco = enderecoRepo.Criar( new Endereco
         Bairro = "Bela Vista",
         Numero = "663"
 
-    });
-
-var usuario = new Usuario
-{
-    Nome = "Elizabeth",
-    IdContato = contato.Id,
-    IdDocumento = documento.Id,
-    IdEndereco = endereco.Id
+    }
 };
 
 repo.Criar(usuario);

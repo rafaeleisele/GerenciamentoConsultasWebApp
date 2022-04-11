@@ -11,11 +11,10 @@ namespace SafeHouseBusiness.Infra.Repository
 
         public IEnumerable<Usuario> BuscarUsuarioPorFiltro()
         {
-            return Set
-                .Include(p => p.Contato)
-                .Include(p => p.Documento)
-                .Include(p => p.Endereco)
-                .Include(p => p.DadosLogin).ToList();
+            return Set .Include(p => p.Contato)
+                        .Include(p => p.Documento)
+                        .Include(p => p.Endereco)
+                        .Include(p => p.DadosLogin).ToList();
         }
     }
 }

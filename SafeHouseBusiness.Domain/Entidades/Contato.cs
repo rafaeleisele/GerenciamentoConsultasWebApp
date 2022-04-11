@@ -5,7 +5,8 @@
         public string Telefone { get; set; }
         public string Email { get; set; }
 
-        public virtual Usuario Usuario { get; set; }
+        public int IdUsuarioContato { get; set; }
+        public Usuario Usuario { get; set; }
     }
 }
 

@@ -50,8 +50,6 @@ namespace SafehouseBusiness.Controllers
             }
         }
 
-
-
         [HttpPost]
         public IActionResult Criar(CriarUsuarioModel request)
         {

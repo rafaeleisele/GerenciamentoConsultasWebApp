@@ -6,7 +6,6 @@ namespace SafeHouseBusiness.Infra.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        //Isso cria a tabela no banco de dados? por que não consiguiria pegar as informações da tabela usuario, sendo que ela ja tem os dados do contato?
         public DbSet<LocalConsulta> LocalConsulta { get; set; }
         public DbSet<Documento> Documento { get; set; }
         public DbSet<Endereco> Endereco { get; set; }
@@ -17,7 +16,6 @@ namespace SafeHouseBusiness.Infra.Data
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> dbContext) : base(dbContext) { }
 
-        //Isso faz a tabela seguir o que foi definido no mapping?
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UsuarioMapping());

@@ -4,80 +4,80 @@
 
 <h1>Editar</h1>
 
-@using(Html.BeginForm())
+@using (Html.BeginForm())
 {
     <div class="row">
         <div class="col">
             <div class="form-group">
                 <label>Nome</label>
-                @Html.TextBoxFor(x => x.Nome, new { @class = "form-control", placeholder = "Nome do Usuario"})
+                @Html.TextBoxFor(x => x.Nome, new { @class = "form-control"})
             </div>
         </div>
     </div>
-    <h4>Dados de Contato</h4>
+    <h4 class="mt-4">Dados de Contato</h4>
     <hr>
     <div class="row">
         <div class="col">
             <div class="form-group">
                 <label>Email</label>
-                @Html.TextBoxFor(x => x.Contato.Email, new { @class = "form-control", placeholder = "email@email.com.br"})
+                @Html.TextBoxFor(x => x.Contato.Email, new { @class = "form-control"})
             </div>
         </div>
         <div class="col">
             <div class="form-group">
                 <label>Telefone</label>
-                @Html.TextBoxFor(x => x.Contato.Telefone, new { @class = "form-control", placeholder = "+55 (00) 00000-0000"})
+                @Html.TextBoxFor(x => x.Contato.Telefone, new { @class = "form-control"})
             </div>
         </div>
     </div>
-    <h4>Dados de Endereço</h4>
+    <h4 class="mt-4">Dados de Endereço</h4>
     <hr>
     <div class="row">
         <div class="col">
             <div class="form-group">
                 <label>Cep</label>
-                @Html.TextBoxFor(x => x.Endereco.Cep, new { @class = "form-control", placeholder = "00000-000"})
+                @Html.TextBoxFor(x => x.Endereco.Cep, new { @class = "form-control"})
             </div>
         </div>
         <div class="col">
             <div class="form-group">
                 <label>Logradouro</label>
-                @Html.TextBoxFor(x => x.Endereco.Logradouro, new { @class = "form-control", placeholder = "Av Paulista"})
+                @Html.TextBoxFor(x => x.Endereco.Logradouro, new { @class = "form-control"})
             </div>
         </div>
         <div class="col">
             <div class="form-group">
                 <label>Numero</label>
-                @Html.TextBoxFor(x => x.Endereco.Numero, new { @class = "form-control", placeholder = "670"})
+                @Html.TextBoxFor(x => x.Endereco.Numero, new { @class = "form-control"})
             </div>
         </div>
         <div class="col">
             <div class="form-group">
                 <label>Complemento</label>
-                @Html.TextBoxFor(x => x.Endereco.Complemento, new { @class = "form-control", placeholder = "Apartamento 0000"})
+                @Html.TextBoxFor(x => x.Endereco.Complemento, new { @class = "form-control"})
             </div>
         </div>
         <div class="col">
             <div class="form-group">
                 <label>Bairro</label>
-                @Html.TextBoxFor(x => x.Endereco.Bairro, new { @class = "form-control", placeholder = "Bela Vista"})
+                @Html.TextBoxFor(x => x.Endereco.Bairro, new { @class = "form-control"})
             </div>
         </div>
         <div class="col">
             <div class="form-group">
                 <label>Cidade</label>
-                @Html.TextBoxFor(x => x.Endereco.Cidade, new { @class = "form-control", placeholder = "São Paulo"})
+                @Html.TextBoxFor(x => x.Endereco.Cidade, new { @class = "form-control"})
             </div>
         </div>
         <div class="col">
             <div class="form-group">
                 <label>Estado</label>
-                @Html.TextBoxFor(x => x.Endereco.Estado, new { @class = "form-control", placeholder = "SP"})
+                @Html.TextBoxFor(x => x.Endereco.Estado, new { @class = "form-control"})
             </div>
         </div>
     </div>
-    <div class="row">
-        @Html.ActionLink("Voltar", "Index")
+    <div class="d-flex justify-content-between align-items-center mt-3">
+            @Html.ActionLink("Voltar", "Index")
         <input type="submit" class="btn btn-success" value="Alterar">
     </div>
 }

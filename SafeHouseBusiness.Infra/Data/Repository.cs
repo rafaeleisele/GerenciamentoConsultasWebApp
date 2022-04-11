@@ -43,7 +43,7 @@ namespace SafeHouseBusiness.Infra.Data
 
         public TEntidade ObterPorGuid(Guid guid) => Set.FirstOrDefault(p => p.Guid == guid);
 
-        public TEntidade ObterPorId(int id) => Set.Find(id);
+        public TEntidade ObterPorId(int id) => Set.GetIncludes().FirstOrDefault(x => x.Id == id);
 
         private void Comparator(Object fromObjeto, PropertyInfo propertyInfo, Type toObjeto)
         {

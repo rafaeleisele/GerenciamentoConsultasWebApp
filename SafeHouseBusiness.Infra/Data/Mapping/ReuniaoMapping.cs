@@ -8,9 +8,10 @@ namespace SafeHouseBusiness.Infra.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<Reuniao> builder)
         {
-            builder.ToTable("Reuniao");
+            builder.ToTable("reunioes");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id);
+            builder.Property(x => x.DataCadastro).HasColumnName("data_cadastro");
             builder.Property(x => x.Guid);
             builder.Property(x => x.Horario);
         }
