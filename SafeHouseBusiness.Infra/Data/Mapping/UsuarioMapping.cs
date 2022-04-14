@@ -19,6 +19,7 @@ namespace SafeHouseBusiness.Infra.Data.Mapping
             builder.HasOne(p => p.Endereco).WithOne(x => x.Usuario).HasForeignKey<Endereco>(fk => fk.IdUsuarioEndereco);
             builder.HasOne(p => p.DadosLogin).WithOne(x => x.Usuario).HasForeignKey<DadosLogin>(fk => fk.IdUsuarioDadosLogin);
             builder.HasOne(p => p.Contato).WithOne(x => x.Usuario).HasForeignKey<Contato>(fk => fk.IdUsuarioContato);
+
         }
     }
 }

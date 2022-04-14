@@ -7,6 +7,7 @@ namespace SafeHouseBusiness.Infra.Data
     public class ApplicationDbContext : DbContext
     {
         public DbSet<LocalConsulta> LocalConsulta { get; set; }
+        public DbSet<UsuarioLocalConsulta> UsuarioLocalConsulta { get; set; }
         public DbSet<Documento> Documento { get; set; }
         public DbSet<Endereco> Endereco { get; set; }
         public DbSet<Contato> Contato { get; set; }
@@ -24,6 +25,7 @@ namespace SafeHouseBusiness.Infra.Data
             modelBuilder.ApplyConfiguration(new ContatoMapping());
             modelBuilder.ApplyConfiguration(new ReuniaoMapping());
             modelBuilder.ApplyConfiguration(new LocalConsultaMapping());
+            modelBuilder.ApplyConfiguration(new UsuarioLocalConsultaMapping());
 
             base.OnModelCreating(modelBuilder);
         }

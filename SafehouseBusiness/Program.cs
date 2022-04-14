@@ -1,4 +1,3 @@
-
 using SafeHouseBusiness.Infra.Repository;
 using SafeHouseBusiness.Domain.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +15,7 @@ builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
 builder.Services.AddScoped<IDocumentoRepository, DocumentosRepository>();
 builder.Services.AddScoped<ILocalConsultaRepository, LocalConsultaRepository>();
+builder.Services.AddScoped<IUsuarioLocalConsultaRepository, UsuarioLocalConsultaRepository>();
 
 var provider = builder.Services.BuildServiceProvider();
 

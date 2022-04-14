@@ -22,6 +22,7 @@ namespace SafeHouseBusiness.Infra.Data.Mapping
             builder.Property(a => a.IdUsuario).IsRequired().HasColumnName("id_usuario");
 
             builder.HasOne(a => a.LocalConsulta).WithMany(a => a.UsuariosLocalConsulta).HasForeignKey(a => a.IdLocalConsulta);
+            builder.HasOne(a => a.Usuario).WithMany(a => a.UsuariosLocalConsulta).HasForeignKey(a => a.IdUsuario);
 
         }
     }

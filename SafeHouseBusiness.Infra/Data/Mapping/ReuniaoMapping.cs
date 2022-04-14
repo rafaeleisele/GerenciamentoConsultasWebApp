@@ -14,6 +14,7 @@ namespace SafeHouseBusiness.Infra.Data.Mapping
             builder.Property(x => x.DataCadastro).HasColumnName("data_cadastro");
             builder.Property(x => x.Guid);
             builder.Property(x => x.Horario);
+
         }
     }
 }
