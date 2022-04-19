@@ -13,7 +13,7 @@ namespace SafeHouseBusiness.Infra.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<UsuarioLocalConsulta> builder)
         {
-            builder.ToTable("Usuarios_locais_consulta");
+            builder.ToTable("usuarios_locais_consulta");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName("id");
             builder.Property(x => x.DataCadastro).HasColumnName("data_cadastro");

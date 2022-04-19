@@ -11,11 +11,13 @@ namespace SafehouseBusiness.Controllers
     {
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly ILocalConsultaRepository _localConsultaRepository;
+        private readonly IUsuarioLocalConsultaRepository _usuarioLocalConsultaRepository;
 
-        public UsuarioController(IUsuarioRepository usuarioRepository, ILocalConsultaRepository localConsultaRepository)
+        public UsuarioController(IUsuarioRepository usuarioRepository, ILocalConsultaRepository localConsultaRepository, IUsuarioLocalConsultaRepository usuariolocalConsultaRepository )
         {
             _localConsultaRepository = localConsultaRepository;
             _usuarioRepository = usuarioRepository;
+            _usuarioLocalConsultaRepository = usuariolocalConsultaRepository;
         }
 
         public IActionResult Index()
@@ -42,7 +44,8 @@ namespace SafehouseBusiness.Controllers
         {
             try
             {               
-                return View(new EditarUsuarioModel(_usuarioRepository.ObterPorId(id)));
+                var retorno = _usuarioLocalConsultaRepository.BuscarUsuarioLocalConsulta(id);
+                return View(new EditarUsuarioModel(retorno));
             }
             catch
             {
@@ -55,8 +58,13 @@ namespace SafehouseBusiness.Controllers
         {
             try
             {
-                var retorno = _usuarioRepository.Criar(request.Usuario);
-                _localConsultaRepository.Criar(request.LocalConsulta);
+                var usuarioRetorno = _usuarioRepository.Criar(request.Usuario);
+                var localConsultaRetorno = _localConsultaRepository.Criar(request.LocalConsulta);
+                var retorno = _usuarioLocalConsultaRepository.Criar(new UsuarioLocalConsulta
+                {
+                    Usuario = usuarioRetorno,
+                    LocalConsulta = localConsultaRetorno
+                });
 
                 return RedirectToAction("Index");
             }

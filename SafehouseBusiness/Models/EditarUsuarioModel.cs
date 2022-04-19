@@ -4,15 +4,13 @@ namespace SafehouseBusiness.Models
 {
     public class EditarUsuarioModel
     {
-        public string Nome { get; set; }
-        public Endereco Endereco { get; set; }
-        public Contato Contato { get; set; }
+        public Usuario Usuario { get; set; }
+        public IList<UsuarioLocalConsulta> UsuarioLocaisConsulta { get; set; }
 
-        public EditarUsuarioModel(Usuario usuario)
+        public EditarUsuarioModel(IList<UsuarioLocalConsulta> usuariosLocalConsultas)
         {
-            Nome = usuario.Nome;
-            Endereco = usuario.Endereco;
-            Contato = usuario.Contato;
+            Usuario = usuariosLocalConsultas.FirstOrDefault().Usuario;
+            UsuarioLocaisConsulta = usuariosLocalConsultas;
         }
     }
 }

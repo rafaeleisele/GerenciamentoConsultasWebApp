@@ -5,5 +5,6 @@ namespace SafeHouseBusiness.Domain.Interface
 {
     public interface IUsuarioLocalConsultaRepository : IRepository<UsuarioLocalConsulta>
     {
+        IList<UsuarioLocalConsulta> BuscarUsuarioLocalConsulta(int idUsuario);
     }
 }
