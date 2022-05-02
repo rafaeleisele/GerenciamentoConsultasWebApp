@@ -32,7 +32,7 @@ var localConsulta = new LocalConsulta {
         Bairro = "Bela Vista",
         Numero = "663"
     }
-};
+}
 var usuario = new Usuario
 {
     Nome = "Elizabeth",
