@@ -13,26 +13,26 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseInMemo
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
-builder.Services.AddScoped<IDocumentoRepository, DocumentosRepository>();
+builder.Services.AddScoped<IDocumentoRepository, DocumentoRepository>();
 builder.Services.AddScoped<ILocalConsultaRepository, LocalConsultaRepository>();
 builder.Services.AddScoped<IUsuarioLocalConsultaRepository, UsuarioLocalConsultaRepository>();
 
 var provider = builder.Services.BuildServiceProvider();
 
 var repo = provider.GetService<IUsuarioRepository>();
-var repoLocalConsulta = provider.GetService<IUsuarioRepository>();
-var repoUsuarioLocalConsulta = provider.GetService<IUsuarioRepository>();
+var repoLocalConsulta = provider.GetService<ILocalConsultaRepository>();
+var repoUsuarioLocalConsulta = provider.GetService<IUsuarioLocalConsultaRepository>();
 
-var localConsulta = new LocalConsulta{
+var localConsulta = new LocalConsulta {
     Nome = "Ed Nações Unidas",
-    Endereco = new Endereco{
-         Cep = "01311100",
+    Endereco = new Endereco {
+        Cep = "01311100",
         Cidade = "São Paulo",
         Logradouro = "Av Paulista",
         Bairro = "Bela Vista",
         Numero = "663"
     }
-}
+};
 var usuario = new Usuario
 {
     Nome = "Elizabeth",
@@ -58,12 +58,13 @@ var usuario = new Usuario
 };
 
 var retorno = repo.Criar(usuario);
-var retornoLocal =  repoLocalConsulta.Criar(localConsulta)
+var retornoLocal = repoLocalConsulta.Criar(localConsulta);
 
-repoUsuarioLocalConsulta.Criar(new UsuarioLocalConsulta{
- Usuario = retorno,
- LocalConsulta = retornoLocal
-})
+repoUsuarioLocalConsulta.Criar(new UsuarioLocalConsulta
+{
+    Usuario = retorno,
+    LocalConsulta = retornoLocal
+});
 
 var app = builder.Build();
 

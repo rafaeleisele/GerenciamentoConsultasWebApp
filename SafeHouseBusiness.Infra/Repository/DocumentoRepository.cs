@@ -4,8 +4,8 @@ using SafeHouseBusiness.Infra.Data;
 
 namespace SafeHouseBusiness.Infra.Repository
 {
-    public class DocumentosRepository : Repository<Documento>, IDocumentoRepository
+    public class DocumentoRepository : Repository<Documento>, IDocumentoRepository
     {
-        public DocumentosRepository(ApplicationDbContext context) : base(context) { }
+        public DocumentoRepository(ApplicationDbContext context) : base(context) { }
     }
 }
