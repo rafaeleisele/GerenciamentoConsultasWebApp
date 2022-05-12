@@ -7,6 +7,10 @@ namespace SafehouseBusiness.Models
         public Usuario Usuario { get; set; }
         public IList<UsuarioLocalConsulta> UsuarioLocaisConsulta { get; set; }
 
-        public EditarUsuarioModel() { }
+        public EditarUsuarioModel(IList<UsuarioLocalConsulta> usuariosLocalConsultas)
+        {
+            Usuario = usuariosLocalConsultas.FirstOrDefault().Usuario;
+            UsuarioLocaisConsulta = usuariosLocalConsultas;
+        }
     }
 }

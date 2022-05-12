@@ -1,7 +1,11 @@
-﻿@model EditarUsuarioModel
+﻿@page "{id:min(1)}"
+@model EditarUsuarioModel
+
+@{
+    
+}
 
 <h1>Editar</h1>
-
 
 @using (Html.BeginForm())
 {
@@ -32,19 +36,12 @@
     <h4 class="mt-4">Dados de Locais Consulta</h4>
     <hr>
     <div class="d-flex flex-column">
-        @foreach (var item in Model.UsuarioLocaisConsulta)
-        {
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">@item.LocalConsulta.Nome</h5>
-                    <p class="card-text">@item.LocalConsulta.Endereco.Logradouro, @item.LocalConsulta.Endereco.Numero</p>
-                    <a href="#" class="btn btn-primary">Visualizar</a>
-                </div>
-            </div>
+        @{
+            var lista = Model;
         }
     </div>
     <div class="d-flex justify-content-between align-items-center mt-3">
-        @Html.ActionLink("Voltar", "Index")
+            @Html.ActionLink("Voltar", "Index")
         <input type="submit" class="btn btn-success" value="Alterar">
     </div>
 }

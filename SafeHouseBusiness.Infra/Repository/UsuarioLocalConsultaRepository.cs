@@ -15,7 +15,6 @@ namespace SafeHouseBusiness.Infra.Repository
                 .Include(u => u.Usuario)
                 .ThenInclude(usuario => usuario.Contato)
                 .Include(u => u.LocalConsulta)
-                .ThenInclude(l => l.Endereco)
                 .ToList();
         }
     }

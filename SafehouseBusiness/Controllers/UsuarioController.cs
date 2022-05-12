@@ -17,7 +17,7 @@ namespace SafehouseBusiness.Controllers
         private readonly ILocalConsultaRepository _localConsultaRepository;
         private readonly IUsuarioLocalConsultaRepository _usuarioLocalConsultaRepository;
 
-        public UsuarioController(IUsuarioRepository usuarioRepository, ILocalConsultaRepository localConsultaRepository, IUsuarioLocalConsultaRepository usuariolocalConsultaRepository)
+        public UsuarioController(IUsuarioRepository usuarioRepository, ILocalConsultaRepository localConsultaRepository, IUsuarioLocalConsultaRepository usuariolocalConsultaRepository )
         {
             _localConsultaRepository = localConsultaRepository;
             _usuarioRepository = usuarioRepository;
@@ -31,7 +31,7 @@ namespace SafehouseBusiness.Controllers
             return View(usuarios);
         }
 
-
+        
         public IActionResult Criar()
         {
             try
@@ -43,20 +43,13 @@ namespace SafehouseBusiness.Controllers
                 throw;
             }
         }
-
+        
         public IActionResult Editar(int id)
         {
             try
-            {
+            {               
                 var retorno = _usuarioLocalConsultaRepository.BuscarUsuarioLocalConsulta(id);
-
-                var model = new EditarUsuarioModel
-                {
-                    Usuario = retorno.First().Usuario,
-                    UsuarioLocaisConsulta = retorno
-                };
-
-                return View(model);
+                return View(new EditarUsuarioModel(retorno));
             }
             catch
             {
