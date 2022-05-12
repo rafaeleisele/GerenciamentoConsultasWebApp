@@ -35,12 +35,7 @@ var localConsulta = new LocalConsulta
         Numero = "663"
     }
 };
-<<<<<<< Updated upstream
 var usuario = new Usuario {
-=======
-var usuario = new Usuario
-{
->>>>>>> Stashed changes
     Nome = "Elizabeth",
     Contato = new Contato
     {
