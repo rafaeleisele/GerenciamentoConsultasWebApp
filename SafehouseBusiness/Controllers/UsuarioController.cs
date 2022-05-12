@@ -4,9 +4,13 @@ using SafeHouseBusiness.Infra.Repository;
 using Microsoft.AspNetCore.Mvc;
 using SafehouseBusiness.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
+using SafeHouseBusiness.Domain.Attributes;
+using SafeHouseBusiness.Domain.Enum;
 
 namespace SafehouseBusiness.Controllers
 {
+    [Autorizacao(NivelAcesso.Administrador, NivelAcesso.AdSafeHouse)]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;

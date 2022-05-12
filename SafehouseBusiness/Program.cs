@@ -1,9 +1,9 @@
+using SafeHouseBusiness.Domain.Entidades;
 using SafeHouseBusiness.Infra.Repository;
 using SafeHouseBusiness.Domain.Interface;
+using SafeHouseBusiness.Domain.Enum;
 using Microsoft.EntityFrameworkCore;
 using SafeHouseBusiness.Infra.Data;
-using SafeHouseBusiness.Domain.Entidades;
-using SafeHouseBusiness.Domain.Enum;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,18 +23,19 @@ var repo = provider.GetService<IUsuarioRepository>();
 var repoLocalConsulta = provider.GetService<ILocalConsultaRepository>();
 var repoUsuarioLocalConsulta = provider.GetService<IUsuarioLocalConsultaRepository>();
 
-var localConsulta = new LocalConsulta {
+var localConsulta = new LocalConsulta
+{
     Nome = "Ed Nações Unidas",
-    Endereco = new Endereco {
+    Endereco = new Endereco
+    {
         Cep = "01311100",
         Cidade = "São Paulo",
         Logradouro = "Av Paulista",
         Bairro = "Bela Vista",
         Numero = "663"
     }
-}
-var usuario = new Usuario
-{
+};
+var usuario = new Usuario {
     Nome = "Elizabeth",
     Contato = new Contato
     {
