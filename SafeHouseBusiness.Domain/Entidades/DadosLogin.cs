@@ -5,7 +5,6 @@
         public String Senha { get; set; }
         public String UserName { get; set; }
 
-        public int IdUsuarioDadosLogin { get; set; }
-        public Usuario Usuario { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

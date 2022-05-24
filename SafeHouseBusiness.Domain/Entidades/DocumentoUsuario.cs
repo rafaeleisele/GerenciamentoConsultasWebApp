@@ -2,12 +2,12 @@
 
 namespace SafeHouseBusiness.Domain.Entidades
 {
-    public class Documento : Entity
+    public class DocumentoUsuario : Entity
     {
         public TipoDocumento TipoDocumento { get; set; }
         public string Identificacao { get; set; }
 
         public Usuario Usuario { get; set; }
-        public int IdUsuarioDocumento { get; set; }
+        public int IdUsuario { get; set; }
     }
 }

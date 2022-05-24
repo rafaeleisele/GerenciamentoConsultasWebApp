@@ -10,7 +10,7 @@ using SafeHouseBusiness.Domain.Enum;
 
 namespace SafehouseBusiness.Controllers
 {
-    [Autorizacao(NivelAcesso.Administrador, NivelAcesso.AdSafeHouse)]
+    //[Autorizacao(NivelAcesso.Administrador, NivelAcesso.AdSafeHouse)]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;

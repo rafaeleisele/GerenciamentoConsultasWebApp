@@ -19,7 +19,6 @@ namespace SafehouseBusiness.Controllers
             return View(contatos);
         }
 
-        //Para que serve a Action Details?
         public ActionResult Details(int id)
         {
             return View();

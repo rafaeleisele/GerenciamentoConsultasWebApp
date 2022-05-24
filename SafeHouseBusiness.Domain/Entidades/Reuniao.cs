@@ -4,7 +4,11 @@
     {
         public DateTime Horario { get; set; }
         public LocalConsulta LocalConsulta { get; set; }
-        public Usuario Paciente { get; set; }
-        public Usuario Consultor { get; set; }
+        public Unidade Unidade { get; set; }
+
+        public int IdLocalConsulta { get; set; }
+        public int IdUnidade { get; set; }
+
+        public virtual UsuarioReuniao UsuariosReunioes { get; set; }
     }
 }

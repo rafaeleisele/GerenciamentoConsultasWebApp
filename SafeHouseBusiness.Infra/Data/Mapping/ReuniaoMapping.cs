@@ -10,11 +10,13 @@ namespace SafeHouseBusiness.Infra.Data.Mapping
         {
             builder.ToTable("reunioes");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id);
+            builder.Property(x => x.Id).HasColumnName("id").ValueGeneratedOnAdd();
+            builder.Property(x => x.Guid).HasColumnName("guid");
             builder.Property(x => x.DataCadastro).HasColumnName("data_cadastro");
-            builder.Property(x => x.Guid);
-            builder.Property(x => x.Horario);
+            builder.Property(x => x.Horario).HasColumnName("horario");
 
+            builder.HasOne(x => x.Unidade).WithMany(x => x.Reunioes).HasForeignKey(x => x.IdUnidade);
+            builder.HasOne(x => x.LocalConsulta).WithMany(x => x.Reunioes).HasForeignKey(x => x.IdLocalConsulta);
         }
     }
 }

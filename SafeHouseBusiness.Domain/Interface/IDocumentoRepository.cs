@@ -3,7 +3,8 @@ using SafeHouseBusiness.Domain.Entidades;
 
 namespace SafeHouseBusiness.Domain.Interface
 {
-    public interface IDocumentoRepository : IRepository<Documento>
+    public interface IDocumentoRepository : IRepository<DocumentoUsuario>
     {
+
     }
 }

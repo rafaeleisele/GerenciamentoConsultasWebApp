@@ -2,13 +2,16 @@
 {
     public class Unidade : Entity
     {
-        public int UnidadeNumero { get; set; }
-        public string UnidadeNome { get; set; }
-        public LocalConsulta LocalConsulta { get; set; }
-        public Usuario Usuario { get; set; }
-        public double Aluguel { get; set; }
+        public int Numero { get; set; }
+        public int IdLocalConsulta { get; set; }
+        public int IdUsuarioUnidade { get; set; }
+        public decimal Aluguel { get; set; }
         public double Tamanho { get; set; }
+        public string Nome { get; set; }
 
-        //Unidades, gostaria de entender melhor como funciona a função buscar por filtro nas interfaces
+        public virtual Usuario Usuario { get; set; }
+        public virtual LocalConsulta LocalConsulta { get; set; }
+        public virtual List<UsuarioUnidade> UsuariosUnidades { get; set; }
+        public virtual List<Reuniao> Reunioes { get; set; }
     }
 }

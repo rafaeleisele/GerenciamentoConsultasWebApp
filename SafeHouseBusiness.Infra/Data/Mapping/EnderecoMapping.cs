@@ -10,17 +10,17 @@ namespace SafeHouseBusiness.Infra.Data.Mapping
         {
             builder.ToTable("enderecos");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).HasColumnName("id");
-            builder.Property(x => x.IdUsuarioEndereco).HasColumnName("id_usuario");
+            builder.Property(x => x.Id).HasColumnName("id").ValueGeneratedOnAdd();
             builder.Property(x => x.DataCadastro).HasColumnName("data_cadastro");
             builder.Property(x => x.Guid).HasColumnName("guid");
-            builder.Property(x => x.Cidade).HasColumnName("cidade");
-            builder.Property(x => x.Cep).HasColumnName("cep");
-            builder.Property(x => x.Logradouro).HasColumnName("logradouro");
-            builder.Property(x => x.Numero).HasColumnName("numero");
-            builder.Property(x => x.Complemento).HasColumnName("complemento");
+            builder.Property(x => x.Estado).HasColumnName("estado").IsRequired(false);
+            builder.Property(x => x.Cidade).HasColumnName("cidade").IsRequired(false);
+            builder.Property(x => x.Cep).HasColumnName("cep").IsRequired(false);
+            builder.Property(x => x.Bairro).HasColumnName("bairro").IsRequired(false);
+            builder.Property(x => x.Logradouro).HasColumnName("logradouro").IsRequired(false);
+            builder.Property(x => x.Numero).HasColumnName("numero").IsRequired(false);
+            builder.Property(x => x.Complemento).HasColumnName("complemento").IsRequired(false);
 
-            builder.HasOne(x => x.Usuario).WithOne(s => s.Endereco).HasForeignKey<Endereco>(x => x.IdUsuarioEndereco);
         }
     }
 }
