@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SafeHouseBusiness.Infra.Data;
@@ -12,17 +11,15 @@ using SafeHouseBusiness.Infra.Data;
 namespace SafehouseBusiness.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220524014015_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20220526190608_nullable")]
+    partial class nullable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.5")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("SafeHouseBusiness.Domain.Entidades.Contato", b =>
                 {
@@ -31,24 +28,22 @@ namespace SafehouseBusiness.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasColumnName("data_cadastro");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("email");
 
                     b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(36)")
                         .HasColumnName("guid");
 
                     b.Property<string>("Telefone")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("telefone");
 
                     b.HasKey("Id");
@@ -63,24 +58,22 @@ namespace SafehouseBusiness.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasColumnName("data_cadastro");
 
                     b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(36)")
                         .HasColumnName("guid");
 
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("senha");
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("login");
 
                     b.HasKey("Id");
@@ -95,14 +88,12 @@ namespace SafehouseBusiness.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasColumnName("data_cadastro");
 
                     b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(36)")
                         .HasColumnName("guid");
 
                     b.Property<int>("IdLocalConsulta")
@@ -111,7 +102,7 @@ namespace SafehouseBusiness.Migrations
 
                     b.Property<string>("Identificacao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("identificacao");
 
                     b.Property<int>("TipoDocumento")
@@ -131,14 +122,12 @@ namespace SafehouseBusiness.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasColumnName("data_cadastro");
 
                     b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(36)")
                         .HasColumnName("guid");
 
                     b.Property<int>("IdUsuario")
@@ -147,7 +136,7 @@ namespace SafehouseBusiness.Migrations
 
                     b.Property<string>("Identificacao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("identificacao");
 
                     b.Property<int>("TipoDocumento")
@@ -167,42 +156,40 @@ namespace SafehouseBusiness.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<string>("Bairro")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("bairro");
 
                     b.Property<string>("Cep")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("cep");
 
                     b.Property<string>("Cidade")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("cidade");
 
                     b.Property<string>("Complemento")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("complemento");
 
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasColumnName("data_cadastro");
 
                     b.Property<string>("Estado")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("estado");
 
                     b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(36)")
                         .HasColumnName("guid");
 
                     b.Property<string>("Logradouro")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("logradouro");
 
                     b.Property<string>("Numero")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("numero");
 
                     b.HasKey("Id");
@@ -217,30 +204,28 @@ namespace SafehouseBusiness.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasColumnName("data_cadastro");
 
                     b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(36)")
                         .HasColumnName("guid");
 
-                    b.Property<int>("IdContato")
+                    b.Property<int?>("IdContato")
                         .HasColumnType("int")
                         .HasColumnName("id_contato");
 
-                    b.Property<int>("IdDocumento")
+                    b.Property<int?>("IdDocumento")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdEndereco")
+                    b.Property<int?>("IdEndereco")
                         .HasColumnType("int")
                         .HasColumnName("id_endereco");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<int>("TipoLocalConsulta")
                         .HasColumnType("int")
@@ -264,18 +249,16 @@ namespace SafehouseBusiness.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasColumnName("data_cadastro");
 
                     b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(36)")
                         .HasColumnName("guid");
 
                     b.Property<DateTime>("Horario")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasColumnName("horario");
 
                     b.Property<int>("IdLocalConsulta")
@@ -300,17 +283,15 @@ namespace SafehouseBusiness.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<decimal>("Aluguel")
                         .HasColumnType("decimal(2,2)")
                         .HasColumnName("aluguel");
 
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(36)")
                         .HasColumnName("guid");
 
                     b.Property<int>("IdLocalConsulta")
@@ -321,7 +302,7 @@ namespace SafehouseBusiness.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("nome");
 
                     b.Property<int>("Numero")
@@ -329,7 +310,7 @@ namespace SafehouseBusiness.Migrations
                         .HasColumnName("numero");
 
                     b.Property<double>("Tamanho")
-                        .HasColumnType("float")
+                        .HasColumnType("double")
                         .HasColumnName("tamanho");
 
                     b.Property<int>("UsuarioId")
@@ -351,14 +332,12 @@ namespace SafehouseBusiness.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasColumnName("data_cadastro");
 
                     b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(36)")
                         .HasColumnName("guid");
 
                     b.Property<int>("IdContato")
@@ -375,7 +354,7 @@ namespace SafehouseBusiness.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("longtext")
                         .HasColumnName("nome");
 
                     b.HasKey("Id");
@@ -399,14 +378,12 @@ namespace SafehouseBusiness.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasColumnName("data_cadastro");
 
                     b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(36)")
                         .HasColumnName("guid");
 
                     b.Property<int>("IdLocalConsulta")
@@ -433,13 +410,11 @@ namespace SafehouseBusiness.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(36)")
                         .HasColumnName("guid");
 
                     b.Property<int>("IdReuniao")
@@ -475,14 +450,12 @@ namespace SafehouseBusiness.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("datetime(6)")
                         .HasColumnName("data_cadastro");
 
                     b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("char(36)")
                         .HasColumnName("guid");
 
                     b.Property<int>("IdUnidade")
@@ -507,7 +480,7 @@ namespace SafehouseBusiness.Migrations
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.LocalConsulta", "LocalConsulta")
                         .WithMany("Documentos")
                         .HasForeignKey("IdLocalConsulta")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("LocalConsulta");
@@ -518,7 +491,7 @@ namespace SafehouseBusiness.Migrations
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Usuario", "Usuario")
                         .WithMany("Documentos")
                         .HasForeignKey("IdUsuario")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Usuario");
@@ -528,15 +501,11 @@ namespace SafehouseBusiness.Migrations
                 {
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Contato", "Contato")
                         .WithOne("LocalConsulta")
-                        .HasForeignKey("SafeHouseBusiness.Domain.Entidades.LocalConsulta", "IdContato")
-                        
-                        .IsRequired();
+                        .HasForeignKey("SafeHouseBusiness.Domain.Entidades.LocalConsulta", "IdContato");
 
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Endereco", "Endereco")
                         .WithOne("LocalConsulta")
-                        .HasForeignKey("SafeHouseBusiness.Domain.Entidades.LocalConsulta", "IdEndereco")
-                        
-                        .IsRequired();
+                        .HasForeignKey("SafeHouseBusiness.Domain.Entidades.LocalConsulta", "IdEndereco");
 
                     b.Navigation("Contato");
 
@@ -548,13 +517,13 @@ namespace SafehouseBusiness.Migrations
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.LocalConsulta", "LocalConsulta")
                         .WithMany("Reunioes")
                         .HasForeignKey("IdLocalConsulta")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Unidade", "Unidade")
                         .WithMany("Reunioes")
                         .HasForeignKey("IdUnidade")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("LocalConsulta");
@@ -567,13 +536,13 @@ namespace SafehouseBusiness.Migrations
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.LocalConsulta", "LocalConsulta")
                         .WithMany("Unidades")
                         .HasForeignKey("IdLocalConsulta")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("LocalConsulta");
@@ -586,19 +555,19 @@ namespace SafehouseBusiness.Migrations
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Contato", "Contato")
                         .WithOne("Usuario")
                         .HasForeignKey("SafeHouseBusiness.Domain.Entidades.Usuario", "IdContato")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.DadosLogin", "DadosLogin")
                         .WithOne("Usuario")
                         .HasForeignKey("SafeHouseBusiness.Domain.Entidades.Usuario", "IdDadosLogin")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Endereco", "Endereco")
                         .WithOne("Usuario")
                         .HasForeignKey("SafeHouseBusiness.Domain.Entidades.Usuario", "IdEndereco")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Contato");
@@ -613,13 +582,13 @@ namespace SafehouseBusiness.Migrations
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.LocalConsulta", "LocalConsulta")
                         .WithMany("UsuariosLocalConsulta")
                         .HasForeignKey("IdLocalConsulta")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Usuario", "Usuario")
                         .WithMany("UsuariosLocalConsulta")
                         .HasForeignKey("IdUsuario")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("LocalConsulta");
@@ -632,19 +601,19 @@ namespace SafehouseBusiness.Migrations
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Reuniao", "Reuniao")
                         .WithOne("UsuariosReunioes")
                         .HasForeignKey("SafeHouseBusiness.Domain.Entidades.UsuarioReuniao", "IdReuniao")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Usuario", "UsuarioConsultor")
                         .WithMany("UsuariosReunioesConsultor")
                         .HasForeignKey("IdUsuarioConsultor")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Usuario", "UsuarioPaciente")
                         .WithMany("UsuariosReunioes")
                         .HasForeignKey("IdUsuarioPaciente")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Reuniao");
@@ -659,13 +628,13 @@ namespace SafehouseBusiness.Migrations
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Unidade", "Unidade")
                         .WithMany("UsuariosUnidades")
                         .HasForeignKey("IdUnidade")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Usuario", "Usuario")
                         .WithMany("UsuariosUnidades")
                         .HasForeignKey("IdUsuario")
-                        
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Unidade");

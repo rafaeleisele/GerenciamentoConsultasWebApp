@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SafeHouseBusiness.Infra.Data;
 
@@ -10,9 +11,10 @@ using SafeHouseBusiness.Infra.Data;
 namespace SafehouseBusiness.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220526173310_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -210,14 +212,14 @@ namespace SafehouseBusiness.Migrations
                         .HasColumnType("char(36)")
                         .HasColumnName("guid");
 
-                    b.Property<int?>("IdContato")
+                    b.Property<int>("IdContato")
                         .HasColumnType("int")
                         .HasColumnName("id_contato");
 
-                    b.Property<int?>("IdDocumento")
+                    b.Property<int>("IdDocumento")
                         .HasColumnType("int");
 
-                    b.Property<int?>("IdEndereco")
+                    b.Property<int>("IdEndereco")
                         .HasColumnType("int")
                         .HasColumnName("id_endereco");
 
@@ -499,11 +501,15 @@ namespace SafehouseBusiness.Migrations
                 {
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Contato", "Contato")
                         .WithOne("LocalConsulta")
-                        .HasForeignKey("SafeHouseBusiness.Domain.Entidades.LocalConsulta", "IdContato");
+                        .HasForeignKey("SafeHouseBusiness.Domain.Entidades.LocalConsulta", "IdContato")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("SafeHouseBusiness.Domain.Entidades.Endereco", "Endereco")
                         .WithOne("LocalConsulta")
-                        .HasForeignKey("SafeHouseBusiness.Domain.Entidades.LocalConsulta", "IdEndereco");
+                        .HasForeignKey("SafeHouseBusiness.Domain.Entidades.LocalConsulta", "IdEndereco")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Contato");
 

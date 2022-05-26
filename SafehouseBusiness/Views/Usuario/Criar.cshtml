@@ -1,4 +1,5 @@
 ﻿@using SafeHouseBusiness.Domain.Entidades
+@using SafehouseBusiness.Models
 @model CriarUsuarioModel
 
 @*A linha 5 a 7 tem alguma funcionalidade?*@
@@ -12,11 +13,11 @@
         <h3>Infomações do Local:</h3>
         <div class="form-group">
             <label for="exampleInputEmail1">Nome</label>
-            @Html.TextBoxFor(p => p.LocalConsulta.Nome, new { @class = "form-control w-50 mt-1"})
+            @Html.TextBoxFor(p => p.LocalConsulta.Nome, new { @class = "form-control w-50 mt-1", required = true})
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Cep</label>
-            @Html.TextBoxFor(p => p.LocalConsulta.Endereco.Cep, new { @class = "form-control w-50 mt-1", required = true})
+            @Html.TextBoxFor(p => p.LocalConsulta.Endereco.Cep, new { @class = "form-control w-50 mt-1"})
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Cidade</label>
@@ -28,7 +29,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Numero</label>
-            @Html.TextBoxFor(p => p.LocalConsulta.Endereco.Numero, new { @class = "form-control w-50 mt-1"})
+            @Html.TextBoxFor(p => p.LocalConsulta.Endereco.Numero, new { @class = "form-control w-50 mt-1" })
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Complemento</label>
@@ -56,11 +57,11 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">User Name</label>
-            @Html.TextBoxFor(p => p.Usuario.DadosLogin.UserName, new { @class = "form-control w-50 mt-1"})
+            @Html.TextBoxFor(p => p.Usuario.DadosLogin.UserName, new { @class = "form-control w-50 mt-1", required = true})
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Senha</label>
-            @Html.PasswordFor(p => p.Usuario.DadosLogin.Senha, new { @class = "form-control w-50 mt-1"})
+            @Html.PasswordFor(p => p.Usuario.DadosLogin.Senha, new { @class = "form-control w-50 mt-1", required = true})
         </div>
 
     </div>

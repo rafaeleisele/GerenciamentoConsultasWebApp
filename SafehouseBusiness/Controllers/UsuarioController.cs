@@ -1,12 +1,8 @@
 ﻿using SafeHouseBusiness.Domain.Entidades;
 using SafeHouseBusiness.Domain.Interface;
-using SafeHouseBusiness.Infra.Repository;
 using Microsoft.AspNetCore.Mvc;
 using SafehouseBusiness.Models;
 using System.Diagnostics;
-using Microsoft.AspNetCore.Authorization;
-using SafeHouseBusiness.Domain.Attributes;
-using SafeHouseBusiness.Domain.Enum;
 
 namespace SafehouseBusiness.Controllers
 {
@@ -71,6 +67,8 @@ namespace SafehouseBusiness.Controllers
             {
                 var usuarioRetorno = _usuarioRepository.Criar(request.Usuario);
                 var localConsultaRetorno = _localConsultaRepository.Criar(request.LocalConsulta);
+
+
                 var retorno = _usuarioLocalConsultaRepository.Criar(new UsuarioLocalConsulta
                 {
                     Usuario = usuarioRetorno,

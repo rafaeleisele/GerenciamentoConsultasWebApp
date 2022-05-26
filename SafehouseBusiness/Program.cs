@@ -1,15 +1,16 @@
-using SafeHouseBusiness.Domain.Entidades;
 using SafeHouseBusiness.Infra.Repository;
 using SafeHouseBusiness.Domain.Interface;
-using SafeHouseBusiness.Domain.Enum;
 using Microsoft.EntityFrameworkCore;
 using SafeHouseBusiness.Infra.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<ApplicationDbContext>(options => 
-    options.UseSqlServer(@"Data Source=LAPTOP-5PKJIQT2\SQLEXPRESS;Initial Catalog=SafeBusinessDB;Integrated Security=True", x => x.MigrationsAssembly("SafehouseBusiness")));
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    var connetionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    options.UseMySql(connetionString, ServerVersion.AutoDetect(connetionString), b => b.MigrationsAssembly("SafehouseBusiness"));
+});
 
 builder.Services.AddAuthentication("CookieAuthentication")
     .AddCookie("CookieAuthentication", config =>
