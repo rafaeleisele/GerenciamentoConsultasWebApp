@@ -5,9 +5,9 @@ namespace SafeHouseBusiness.Domain.Entidades
 {
     public class LocalConsulta : Entity
     {
-        public int IdContato { get; set; }
-        public int IdDocumento { get; set; }
-        public int IdEndereco { get; set; }
+        public int? IdContato { get; set; }
+        public int? IdDocumento { get; set; }
+        public int? IdEndereco { get; set; }
         public string Nome { get; set; }
         public TipoLocalConsulta TipoLocalConsulta { get; set; }
         
